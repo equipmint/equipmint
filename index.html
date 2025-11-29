@@ -7,514 +7,348 @@
   <style>
     :root {
       --bg: #050608;
-      --bg-alt: #0d0f14;
-      --card: #161922;
+      --bg-alt: #10131b;
+      --card: #141824;
       --accent: #28e0b9;
-      --accent-soft: rgba(40, 224, 185, 0.12);
       --text: #f5f6f9;
       --muted: #a0a4b3;
-      --border: #262b38;
+      --border: #242737;
       --radius: 10px;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151926 0, #050608 55%);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
     }
     a { color: inherit; text-decoration: none; }
 
     .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(5,6,8,0.95), rgba(5,6,8,0.82));
-      border-bottom: 1px solid #101320;
-    }
-    .nav-inner {
       max-width: 960px;
       margin: 0 auto;
-      padding: 12px 18px;
+      padding: 16px 16px 40px;
+    }
+
+    /* HEADER */
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
+      padding: 8px 0 12px;
     }
-    .logo {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-mark {
+      width: 18px; height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent), #64ffe3);
+    }
+    .brand-name {
       font-weight: 600;
       letter-spacing: 0.08em;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .logo-mark {
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, var(--accent), #69ffe4);
-      display: inline-block;
-    }
-    .nav-links {
-      display: flex;
-      gap: 18px;
       font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+    .header-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.85rem;
       color: var(--muted);
     }
-    .nav-links a {
-      padding-bottom: 2px;
-      border-bottom: 1px solid transparent;
-    }
-    .nav-links a:hover {
+    .header-links a:hover {
       color: var(--text);
-      border-bottom-color: var(--accent);
     }
 
-    main {
-      flex: 1;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 32px 18px 64px;
+    @media (max-width: 640px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
+    /* HERO */
     .hero {
+      margin-top: 20px;
+      padding: 18px 16px 18px;
+      border-radius: 14px;
+      background: radial-gradient(circle at top, #191e2e 0, #050608 55%);
+      border: 1px solid #1f2333;
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 32px;
-      align-items: center;
+      gap: 20px;
     }
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
+      .hero {
+        grid-template-columns: 1fr;
+      }
     }
-
-    .eyebrow {
+    .hero-text small {
       font-size: 0.8rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 10px;
     }
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
+    .hero-text h1 {
+      margin: 6px 0;
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
     }
-    .hero-sub {
+    .hero-text p {
+      margin: 0;
       color: var(--muted);
-      max-width: 32rem;
       font-size: 0.95rem;
+      max-width: 30rem;
     }
-
-    .pill-row {
+    .hero-badges {
+      margin: 14px 0;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 18px 0 26px;
+      font-size: 0.78rem;
     }
-    .pill {
+    .badge-pill {
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(13, 16, 24, 0.9);
-      padding: 6px 12px;
-      font-size: 0.78rem;
+      padding: 5px 9px;
       color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .pill-dot {
-      width: 6px; height: 6px; border-radius: 999px;
-      background: var(--accent);
+      background: rgba(8,10,16,0.9);
     }
 
-    .btn-row {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 14px;
+      margin-top: 10px;
+      margin-bottom: 6px;
     }
     .btn {
       border-radius: 999px;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border: 1px solid transparent;
       font-size: 0.9rem;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-block;
+      text-align: center;
     }
     .btn-primary {
       background: var(--accent);
       color: #041013;
       font-weight: 600;
     }
-    .btn-primary:hover {
-      filter: brightness(1.04);
-    }
+    .btn-primary:hover { filter: brightness(1.04); }
     .btn-ghost {
-      background: rgba(10, 13, 20, 0.9);
+      background: transparent;
       border-color: var(--border);
       color: var(--muted);
     }
     .btn-ghost:hover {
-      border-color: var(--accent-soft);
+      border-color: var(--accent);
       color: var(--text);
     }
-
     .hero-note {
       font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .hero-card {
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      background: radial-gradient(circle at top left, #212941 0, #0b0d13 50%, #050608 100%);
-      border: 1px solid #222638;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.75);
-    }
-    .hero-card-title {
-      font-size: 0.9rem;
-      margin: 0 0 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .badge {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    .keychain-visual {
+    .hero-image {
       border-radius: 12px;
-      background: #050609;
+      background: var(--bg-alt);
       border: 1px solid var(--border);
-      padding: 12px;
-      display: grid;
-      grid-template-columns: 1.5fr 1.6fr;
-      gap: 10px;
-      align-items: center;
-    }
-    @media (max-width: 600px) {
-      .keychain-visual { grid-template-columns: 1fr; }
-    }
-    .mock-keychain-box {
-      background: conic-gradient(from 210deg, #25293b, #050608 45%, #171b28 70%, #25293b);
-      border-radius: 10px;
       padding: 10px;
-      display: grid;
-      place-items: center;
-      min-height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .mock-case {
-      width: 140px;
-      height: 48px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, #111622, #2f364a);
-      border: 1px solid #43ffd6;
-      position: relative;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.8);
-    }
-    .mock-core {
-      position: absolute;
-      width: 34px; height: 34px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #ffcf33, #ff6347);
-      top: 7px;
-      left: 10px;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.6);
-    }
-    .mock-core:nth-child(2) {
-      left: 54px;
-      background: linear-gradient(135deg, #7f5dff, #20d3ff);
-    }
-    .mock-ring {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      border: 3px solid #a0a4b3;
-      position: absolute;
-      right: -15px;
-      top: 13px;
-    }
-    .mock-label {
-      position: absolute;
-      bottom: 6px;
-      left: 10px;
-      height: 6px; width: 90px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
     }
 
-    .config-lines {
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: grid;
-      gap: 4px;
-    }
-    .config-label {
-      color: #d5d7e4;
-      font-size: 0.78rem;
-    }
-
+    /* SECTION WRAPPER */
     .section {
-      margin-top: 48px;
+      margin-top: 32px;
     }
     .section h2 {
       font-size: 1.1rem;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
     }
     .section p {
+      margin: 0;
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 40rem;
     }
 
-    .steps {
+    /* SIMPLE CARDS / LIKE PAYHIP */
+    .product-grid {
+      margin-top: 16px;
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 14px;
-      margin-top: 18px;
     }
-    @media (min-width: 720px) {
-      .steps {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-    .step {
+    .product-card {
+      background: var(--card);
       border-radius: var(--radius);
-      background: var(--bg-alt);
       border: 1px solid var(--border);
-      padding: 12px 12px 11px;
-      font-size: 0.85rem;
+      padding: 10px;
+      font-size: 0.88rem;
     }
-    .step-num {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .product-price {
+      font-size: 0.9rem;
       margin-bottom: 6px;
     }
-    .step-title {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
+    .product-price span {
+      color: var(--accent);
+      font-weight: 600;
     }
-    .step p {
-      margin: 0;
+    .product-card p {
+      margin: 0 0 8px;
       color: var(--muted);
+      font-size: 0.84rem;
     }
 
-    .grid {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px;
-    }
-    .card {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 10px 11px;
-      font-size: 0.85rem;
-    }
-    .chip-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .chip {
-      padding: 3px 7px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.05);
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
+    /* FOOTER */
     footer {
-      border-top: 1px solid #101320;
-      padding: 14px 18px 20px;
-      font-size: 0.78rem;
+      margin-top: 32px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
       color: var(--muted);
-      max-width: 960px;
-      margin: 0 auto;
       text-align: center;
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="nav">
-      <div class="nav-inner">
-        <a href="#top" class="logo">
-          <span class="logo-mark"></span>
-          <span>EQUIPMINT</span>
-        </a>
-        <nav class="nav-links">
-          <a href="#how">How it works</a>
-          <a href="#catalog">Knives & Gloves</a>
-          <a href="#shop">Shop</a>
-        </nav>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div class="brand-name">EquipMint</div>
       </div>
+      <nav class="header-links">
+        <a href="#shop">Shop</a>
+        <a href="#how">How it works</a>
+        <a href="#disclaimer">Disclaimer</a>
+      </nav>
     </header>
 
-    <main id="top">
-      <!-- HERO -->
-      <section class="hero">
-        <div>
-          <div class="eyebrow">Physical skins for people who live in the inventory screen</div>
-          <h1>Turn your favourite loadouts into a modular keychain.</h1>
-          <p class="hero-sub">
-            Pick a case, slot in two cores, and carry your <strong>knife + gloves</strong> setup IRL.
-            Designed for Counter-Strike players who want their main loadout on their bag, desk, or keys.
-          </p>
-
-          <div class="pill-row">
-            <div class="pill"><span class="pill-dot"></span> 5 case colours</div>
-            <div class="pill"><span class="pill-dot"></span> 170+ knife / glove cores</div>
-            <div class="pill"><span class="pill-dot"></span> Swappable in seconds</div>
-          </div>
-
-          <div id="shop" class="btn-row">
-            <!-- Replace href values with your Payhip links -->
-            <a href="https://payhip.com/your-full-keychain-link" class="btn btn-primary">
-              Build full keychain – $24
-            </a>
-            <a href="https://payhip.com/your-cores-link" class="btn btn-ghost">
-              Already own a case? Buy extra cores
-            </a>
-          </div>
-
-          <div class="hero-note">
-            Free shipping on Canadian & US orders over $20. Worldwide shipping available.
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-title">
-            <span>Current build</span>
-            <span class="badge">Preview</span>
-          </div>
-          <div class="hero-card-sub">
-            Pick a case + 2 cores. Swap them whenever you change mains in-game.
-          </div>
-
-          <div class="keychain-visual">
-            <div class="mock-keychain-box">
-              <div class="mock-case">
-                <div class="mock-core"></div>
-                <div class="mock-core"></div>
-                <div class="mock-ring"></div>
-                <div class="mock-label"></div>
-              </div>
-            </div>
-            <div class="config-lines">
-              <div>
-                <div class="config-label">Case</div>
-                <span>Obsidian Black / Frosted acrylic shell</span>
-              </div>
-              <div>
-                <div class="config-label">Core A</div>
-                <span>★ Karambit | Doppler (Phase 2)</span>
-              </div>
-              <div>
-                <div class="config-label">Core B</div>
-                <span>★ Sport Gloves | Vice</span>
-              </div>
-              <div>
-                <div class="config-label">What’s in the box</div>
-                <span>1x case · 2x cores · backing card · protective sleeve</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <!-- HOW IT WORKS -->
-      <section id="how" class="section">
-        <h2>How EquipMint works</h2>
-        <p>Three quick steps from loadout idea to physical keychain.</p>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">Step 1</div>
-            <div class="step-title">Choose your case</div>
-            <p>Select one of five shells – from stealth black to neon frost. Cases are reused forever; you only swap the cores.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">Step 2</div>
-            <div class="step-title">Pick 2 cores</div>
-            <p>Each core is a knife or glove design. Mix any two: double knives, double gloves, or one of each.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">Step 3</div>
-            <div class="step-title">Swap when your mains change</div>
-            <p>Day-trade your taste. Pop the case open, slide out a core, and drop in a new one when you switch skins.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- CATALOG PREVIEW -->
-      <section id="catalog" class="section">
-        <h2>Knife & glove library</h2>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-text">
+        <small>Fan-made keychains for Counter-Strike players</small>
+        <h1>Build a modular keychain from your favourite knife + glove combo.</h1>
         <p>
-          We’re building a library of 120+ knife designs and 50+ glove designs. Here’s a small sample;
-          the full list lives in the core picker when you build your keychain.
+          Choose a case, pick your cores, and let Payhip handle secure checkout.
+          This site is just a clean front page that links into the Payhip store.
         </p>
 
-        <div class="grid">
-          <article class="card">
-            <strong>Popular knife cores</strong>
-            <div class="chip-row">
-              <span class="chip">★ Karambit | Doppler</span>
-              <span class="chip">★ Butterfly | Fade</span>
-              <span class="chip">★ M9 | Lore</span>
-              <span class="chip">★ Skeleton | Crimson Web</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <strong>Popular glove cores</strong>
-            <div class="chip-row">
-              <span class="chip">★ Sport Gloves | Vice</span>
-              <span class="chip">★ Specialist | Crimson Kimono</span>
-              <span class="chip">★ Hand Wraps | Cobalt Skulls</span>
-              <span class="chip">★ Driver Gloves | King Snake</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <strong>Future drops</strong>
-            <div class="chip-row">
-              <span class="chip">Operator-themed set</span>
-              <span class="chip">Sticker-only cores</span>
-              <span class="chip">Map-themed series</span>
-              <span class="chip">Limited holo foil runs</span>
-            </div>
-          </article>
+        <div class="hero-badges">
+          <span class="badge-pill">5 case colours</span>
+          <span class="badge-pill">170+ knife / glove cores</span>
+          <span class="badge-pill">Free shipping over $20 (CA/US)</span>
         </div>
-      </section>
-    </main>
+
+        <div class="hero-buttons" id="shop">
+          <!-- Replace these hrefs with your real Payhip links -->
+          <a href="https://payhip.com/your-full-keychain-product" class="btn btn-primary">
+            Build full keychain – $24
+          </a>
+          <a href="https://payhip.com/your-cores-only-product" class="btn btn-ghost">
+            Already own a case? Buy extra cores
+          </a>
+        </div>
+        <div class="hero-note">
+          Checkout, cart, and shipping are all handled on Payhip.
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <!-- Replace src with one of your glove/keychain renders -->
+        <img src="your-keychain-preview.png" alt="Preview of EquipMint modular keychain" />
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS (SIMPLE BLOCKS LIKE PAYHIP SECTIONS) -->
+    <section class="section" id="how">
+      <h2>How it works</h2>
+      <p>Three quick steps. Everything after “Add to cart” happens on Payhip’s checkout.</p>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-name">1. Pick a case</div>
+          <p>Select one shell colour. Cases are reusable, so you only need to buy this once.</p>
+        </div>
+        <div class="product-card">
+          <div class="product-name">2. Choose your cores</div>
+          <p>Each core is a knife or glove design. Payhip’s product page shows all variants in a dropdown.</p>
+        </div>
+        <div class="product-card">
+          <div class="product-name">3. Checkout on Payhip</div>
+          <p>Payhip handles payment, cart, and shipping rules (including free shipping over $20 for CA/US).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIMPLE PRODUCT TEASERS (MATCHES PAYHIP "FEATURED PRODUCTS" STYLE) -->
+    <section class="section">
+      <h2>Featured products</h2>
+      <p>These cards mirror what you’ll see inside the Payhip store.</p>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <!-- Optional thumbnail; can use the same one as Payhip -->
+          <img src="full-keychain-thumb.png" alt="Full modular keychain product" />
+          <div class="product-name">Full Modular Keychain</div>
+          <div class="product-price"><span>$24 CAD</span> · case + 2 cores</div>
+          <p>Best for new customers. Comes with one case and two cores of your choice.</p>
+          <a href="https://payhip.com/your-full-keychain-product" class="btn btn-primary" style="width:100%; margin-top:4px;">View on Payhip</a>
+        </article>
+
+        <article class="product-card">
+          <img src="cores-only-thumb.png" alt="Extra keychain cores" />
+          <div class="product-name">Extra Cores</div>
+          <div class="product-price"><span>$5 CAD</span> each</div>
+          <p>Already own a case? Add more knife or glove cores to match new loadouts.</p>
+          <a href="https://payhip.com/your-cores-only-product" class="btn btn-ghost" style="width:100%; margin-top:4px;">View on Payhip</a>
+        </article>
+
+        <article class="product-card">
+          <img src="bundle-thumb.png" alt="Bundle of multiple cores" />
+          <div class="product-name">Core Bundles</div>
+          <div class="product-price"><span>$20+ CAD</span> · free shipping (CA/US)</div>
+          <p>Bundles priced so they automatically qualify for free shipping in Payhip.</p>
+          <a href="https://payhip.com/your-storefront" class="btn btn-ghost" style="width:100%; margin-top:4px;">Browse all bundles</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section class="section" id="disclaimer">
+      <h2>Fan-art disclaimer</h2>
+      <p>
+        This store sells fan-made artwork inspired by in-game cosmetics from Counter-Strike.
+        We are not affiliated with or endorsed by Valve Corporation. All game names and related
+        assets belong to their respective owners.
+      </p>
+    </section>
 
     <footer>
-      EquipMint · modular keychains for Counter-Strike players.  
-      This is a mock layout used for prototyping – replace text & links with your own.
+      © EquipMint – modular keychains. Front page hosted on GitHub Pages, checkout powered by Payhip.
     </footer>
   </div>
 </body>
