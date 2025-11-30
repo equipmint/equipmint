@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>EquipMint – Modular Keychains</title>
+  <title>EquipMint Store – Mock Payhip Layout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
       --bg: #050608;
       --bg-alt: #10131b;
-      --card: #141824;
+      --card: #151926;
       --accent: #28e0b9;
       --text: #f5f6f9;
       --muted: #a0a4b3;
-      --border: #242737;
+      --border: #262a3a;
       --radius: 10px;
     }
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -25,99 +26,94 @@
     a { color: inherit; text-decoration: none; }
 
     .page {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 16px 16px 40px;
     }
 
-    /* HEADER */
-    .header {
+    /* HEADER – similar to Payhip's simple header */
+    header {
+      padding: 8px 0 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      padding: 8px 0 12px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
     }
-    .brand {
+    .store-title {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .brand-mark {
-      width: 18px; height: 18px;
+    .store-logo {
+      width: 20px;
+      height: 20px;
       border-radius: 6px;
-      background: linear-gradient(135deg, var(--accent), #64ffe3);
+      background: linear-gradient(135deg, var(--accent), #63ffe2);
     }
-    .brand-name {
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-    .header-links {
+    .nav-links {
       display: flex;
       gap: 14px;
       font-size: 0.85rem;
       color: var(--muted);
     }
-    .header-links a:hover {
-      color: var(--text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     @media (max-width: 640px) {
-      .header {
+      header {
         flex-direction: column;
         align-items: flex-start;
       }
     }
 
-    /* HERO */
+    /* HERO – like Payhip banner block */
     .hero {
-      margin-top: 20px;
+      margin-top: 18px;
       padding: 18px 16px 18px;
-      border-radius: 14px;
+      border-radius: 12px;
       background: radial-gradient(circle at top, #191e2e 0, #050608 55%);
       border: 1px solid #1f2333;
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 20px;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 18px;
     }
     @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
+      .hero { grid-template-columns: 1fr; }
     }
-    .hero-text small {
-      font-size: 0.8rem;
+    .hero small {
+      font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
     }
-    .hero-text h1 {
-      margin: 6px 0;
-      font-size: clamp(1.8rem, 3vw, 2.3rem);
+    .hero h1 {
+      margin: 8px 0 6px;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
     }
-    .hero-text p {
+    .hero p {
       margin: 0;
       color: var(--muted);
       font-size: 0.95rem;
       max-width: 30rem;
     }
     .hero-badges {
-      margin: 14px 0;
+      margin: 14px 0 10px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       font-size: 0.78rem;
     }
-    .badge-pill {
+    .hero-badge {
       border-radius: 999px;
       border: 1px solid var(--border);
-      padding: 5px 9px;
+      padding: 5px 10px;
       color: var(--muted);
-      background: rgba(8,10,16,0.9);
+      background: rgba(9,11,18,0.92);
     }
-
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -131,15 +127,15 @@
       border: 1px solid transparent;
       font-size: 0.9rem;
       cursor: pointer;
-      display: inline-block;
       text-align: center;
+      display: inline-block;
     }
     .btn-primary {
       background: var(--accent);
       color: #041013;
       font-weight: 600;
     }
-    .btn-primary:hover { filter: brightness(1.04); }
+    .btn-primary:hover { filter: brightness(1.05); }
     .btn-ghost {
       background: transparent;
       border-color: var(--border);
@@ -155,7 +151,7 @@
     }
 
     .hero-image {
-      border-radius: 12px;
+      border-radius: 10px;
       background: var(--bg-alt);
       border: 1px solid var(--border);
       padding: 10px;
@@ -165,17 +161,17 @@
     }
     .hero-image img {
       max-width: 100%;
-      border-radius: 10px;
+      border-radius: 8px;
       display: block;
     }
 
-    /* SECTION WRAPPER */
+    /* SECTIONS */
     .section {
-      margin-top: 32px;
+      margin-top: 30px;
     }
     .section h2 {
       font-size: 1.1rem;
-      margin: 0 0 6px;
+      margin: 0 0 4px;
     }
     .section p {
       margin: 0;
@@ -183,11 +179,11 @@
       color: var(--muted);
     }
 
-    /* SIMPLE CARDS / LIKE PAYHIP */
+    /* PRODUCT GRID – similar to Payhip “Products” block */
     .product-grid {
       margin-top: 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 14px;
     }
     .product-card {
@@ -196,32 +192,74 @@
       border: 1px solid var(--border);
       padding: 10px;
       font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
     .product-card img {
       width: 100%;
       border-radius: 8px;
       display: block;
-      margin-bottom: 8px;
     }
     .product-name {
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-top: 4px;
     }
     .product-price {
       font-size: 0.9rem;
-      margin-bottom: 6px;
     }
     .product-price span {
       color: var(--accent);
       font-weight: 600;
     }
     .product-card p {
-      margin: 0 0 8px;
+      margin: 0;
       color: var(--muted);
       font-size: 0.84rem;
     }
+    .product-card .btn {
+      margin-top: 6px;
+      width: 100%;
+    }
 
-    /* FOOTER */
+    /* COLLECTION GRID – like Payhip “Collections” section */
+    .collection-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+    .collection-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 10px;
+      font-size: 0.86rem;
+    }
+    .collection-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .collection-items {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* FAQ / FOOTER */
+    .faq-list {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .faq-item {
+      margin-bottom: 8px;
+    }
+    .faq-item strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+
     footer {
       margin-top: 32px;
       padding-top: 14px;
@@ -234,121 +272,148 @@
 </head>
 <body>
   <div class="page">
-    <!-- HEADER -->
-    <header class="header">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div class="brand-name">EquipMint</div>
+    <!-- HEADER (Payhip-style: logo + simple nav) -->
+    <header>
+      <div class="store-title">
+        <div class="store-logo"></div>
+        <span>EquipMint Store</span>
       </div>
-      <nav class="header-links">
+      <nav class="nav-links">
         <a href="#shop">Shop</a>
-        <a href="#how">How it works</a>
-        <a href="#disclaimer">Disclaimer</a>
+        <a href="#collections">Collections</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-text">
-        <small>Fan-made keychains for Counter-Strike players</small>
-        <h1>Build a modular keychain from your favourite knife + glove combo.</h1>
+    <!-- HERO (like Payhip banner) -->
+    <section class="hero">
+      <div>
+        <small>Fan-made modular keychains</small>
+        <h1>Build your own knife & glove keychain.</h1>
         <p>
-          Choose a case, pick your cores, and let Payhip handle secure checkout.
-          This site is just a clean front page that links into the Payhip store.
+          Choose a case, pick knife and glove cores inspired by in-game skins, and check out through Payhip’s secure cart system.
         </p>
 
         <div class="hero-badges">
-          <span class="badge-pill">5 case colours</span>
-          <span class="badge-pill">170+ knife / glove cores</span>
-          <span class="badge-pill">Free shipping over $20 (CA/US)</span>
+          <span class="hero-badge">5 case colours</span>
+          <span class="hero-badge">170+ cores</span>
+          <span class="hero-badge">Free shipping over $20 (CA/US)</span>
         </div>
 
         <div class="hero-buttons" id="shop">
-          <!-- Replace these hrefs with your real Payhip links -->
-          <a href="https://payhip.com/your-full-keychain-product" class="btn btn-primary">
-            Build full keychain – $24
-          </a>
-          <a href="https://payhip.com/your-cores-only-product" class="btn btn-ghost">
-            Already own a case? Buy extra cores
-          </a>
+          <!-- On Payhip, these would be "Featured product" buttons or links to products -->
+          <a href="#" class="btn btn-primary">Shop full keychains</a>
+          <a href="#" class="btn btn-ghost">Shop cores only</a>
         </div>
+
         <div class="hero-note">
-          Checkout, cart, and shipping are all handled on Payhip.
+          This is a mock layout to help design your Payhip store. On the real store, all buying happens on Payhip.
         </div>
       </div>
 
       <div class="hero-image">
-        <!-- Replace src with one of your glove/keychain renders -->
-        <img src="your-keychain-preview.png" alt="Preview of EquipMint modular keychain" />
+        <!-- Replace with one of your mockup images if you want -->
+        <img src="your-keychain-mock.png" alt="EquipMint modular keychain preview" />
       </div>
     </section>
 
-    <!-- HOW IT WORKS (SIMPLE BLOCKS LIKE PAYHIP SECTIONS) -->
-    <section class="section" id="how">
-      <h2>How it works</h2>
-      <p>Three quick steps. Everything after “Add to cart” happens on Payhip’s checkout.</p>
-
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-name">1. Pick a case</div>
-          <p>Select one shell colour. Cases are reusable, so you only need to buy this once.</p>
-        </div>
-        <div class="product-card">
-          <div class="product-name">2. Choose your cores</div>
-          <p>Each core is a knife or glove design. Payhip’s product page shows all variants in a dropdown.</p>
-        </div>
-        <div class="product-card">
-          <div class="product-name">3. Checkout on Payhip</div>
-          <p>Payhip handles payment, cart, and shipping rules (including free shipping over $20 for CA/US).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SIMPLE PRODUCT TEASERS (MATCHES PAYHIP "FEATURED PRODUCTS" STYLE) -->
+    <!-- FEATURED PRODUCTS (like Payhip's main product list) -->
     <section class="section">
       <h2>Featured products</h2>
-      <p>These cards mirror what you’ll see inside the Payhip store.</p>
+      <p>These are the main products you’ll sell on Payhip.</p>
 
       <div class="product-grid">
         <article class="product-card">
-          <!-- Optional thumbnail; can use the same one as Payhip -->
-          <img src="full-keychain-thumb.png" alt="Full modular keychain product" />
+          <img src="full-keychain-thumb.png" alt="Full modular keychain" />
           <div class="product-name">Full Modular Keychain</div>
           <div class="product-price"><span>$24 CAD</span> · case + 2 cores</div>
-          <p>Best for new customers. Comes with one case and two cores of your choice.</p>
-          <a href="https://payhip.com/your-full-keychain-product" class="btn btn-primary" style="width:100%; margin-top:4px;">View on Payhip</a>
+          <p>Best for new customers. Pick one case and two cores (knife or glove designs) in the Payhip product page.</p>
+          <a href="#" class="btn btn-primary">View product (Payhip)</a>
         </article>
 
         <article class="product-card">
-          <img src="cores-only-thumb.png" alt="Extra keychain cores" />
+          <img src="cores-thumb.png" alt="Extra cores" />
           <div class="product-name">Extra Cores</div>
           <div class="product-price"><span>$5 CAD</span> each</div>
-          <p>Already own a case? Add more knife or glove cores to match new loadouts.</p>
-          <a href="https://payhip.com/your-cores-only-product" class="btn btn-ghost" style="width:100%; margin-top:4px;">View on Payhip</a>
+          <p>Already own a case? Add more knife or glove cores. Customers can add multiple cores to their Payhip cart.</p>
+          <a href="#" class="btn btn-ghost">View product (Payhip)</a>
         </article>
 
         <article class="product-card">
-          <img src="bundle-thumb.png" alt="Bundle of multiple cores" />
+          <img src="bundle-thumb.png" alt="Core bundles" />
           <div class="product-name">Core Bundles</div>
-          <div class="product-price"><span>$20+ CAD</span> · free shipping (CA/US)</div>
-          <p>Bundles priced so they automatically qualify for free shipping in Payhip.</p>
-          <a href="https://payhip.com/your-storefront" class="btn btn-ghost" style="width:100%; margin-top:4px;">Browse all bundles</a>
+          <div class="product-price"><span>$20+ CAD</span> · free CA/US shipping</div>
+          <p>Pre-made bundles calibrated so the order total qualifies for Payhip’s free-shipping rule.</p>
+          <a href="#" class="btn btn-ghost">Browse bundles (Payhip)</a>
         </article>
       </div>
     </section>
 
-    <!-- DISCLAIMER -->
-    <section class="section" id="disclaimer">
-      <h2>Fan-art disclaimer</h2>
-      <p>
-        This store sells fan-made artwork inspired by in-game cosmetics from Counter-Strike.
-        We are not affiliated with or endorsed by Valve Corporation. All game names and related
-        assets belong to their respective owners.
-      </p>
+    <!-- COLLECTIONS (like Payhip categories for knives / gloves) -->
+    <section class="section" id="collections">
+      <h2>Collections</h2>
+      <p>On Payhip, you’ll turn these into collections or categories so people can browse by weapon or glove type.</p>
+
+      <div class="collection-grid">
+        <div class="collection-card">
+          <div class="collection-name">Knife Cores</div>
+          <div class="collection-items">
+            Sub-collections you’ll make on Payhip:<br>
+            • Karambit<br>
+            • Butterfly<br>
+            • Talon<br>
+            • Ursus<br>
+            • M9 Bayonet<br>
+            • Skeleton, and more
+          </div>
+        </div>
+
+        <div class="collection-card">
+          <div class="collection-name">Glove Cores</div>
+          <div class="collection-items">
+            Sub-collections you’ll make on Payhip:<br>
+            • Sport Gloves (Vice, Crimson Kimono, etc.)<br>
+            • Specialist<br>
+            • Moto Gloves<br>
+            • Hand Wraps
+          </div>
+        </div>
+
+        <div class="collection-card">
+          <div class="collection-name">By theme / rarity</div>
+          <div class="collection-items">
+            Optional extra ways to group on Payhip:<br>
+            • “Red” or “Gold” theme<br>
+            • High-end / rare skins<br>
+            • Operation-themed gloves (Bloodhound, Hydra, Broken Fang)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ / DISCLAIMER (Payhip has text sections like this) -->
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <p>These are typical questions you can turn into Payhip FAQ/text blocks.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <strong>Do I check out on this site or on Payhip?</strong>
+          <span>In the real store, all carts and payments are handled by Payhip. This page is just a mockup to guide the layout.</span>
+        </div>
+        <div class="faq-item">
+          <strong>Can I add multiple cores to one order?</strong>
+          <span>Yes. On Payhip, customers can add multiple core variants to the cart and still see free shipping above $20 (CA/US).</span>
+        </div>
+        <div class="faq-item">
+          <strong>Is this official Counter-Strike merch?</strong>
+          <span>No. These are fan-made designs inspired by in-game cosmetics. They are not affiliated with or endorsed by Valve.</span>
+        </div>
+      </div>
     </section>
 
     <footer>
-      © EquipMint – modular keychains. Front page hosted on GitHub Pages, checkout powered by Payhip.
+      Mock Payhip-style layout for EquipMint. Use this as a reference when building your actual Payhip store.
     </footer>
   </div>
 </body>
